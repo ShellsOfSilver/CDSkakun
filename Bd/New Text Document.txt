@@ -1,0 +1,5 @@
+ try
+   ADOConnection.Open;
+   ADOTable.Open;
+ except
+   on EVariantTypeCastError do;

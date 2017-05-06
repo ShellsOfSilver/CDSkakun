@@ -1,0 +1,124 @@
+object Form6: TForm6
+  Left = 359
+  Top = 142
+  Width = 843
+  Height = 436
+  Caption = 'Form6'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 640
+    Top = 16
+    Width = 30
+    Height = 13
+    Caption = 'Marka'
+  end
+  object Label2: TLabel
+    Left = 640
+    Top = 64
+    Width = 29
+    Height = 13
+    Caption = 'Model'
+  end
+  object Label3: TLabel
+    Left = 640
+    Top = 112
+    Width = 24
+    Height = 13
+    Caption = 'Color'
+  end
+  object Label4: TLabel
+    Left = 640
+    Top = 160
+    Width = 37
+    Height = 13
+    Caption = 'Mileage'
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Top = 8
+    Width = 617
+    Height = 385
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+  end
+  object Button1: TButton
+    Left = 736
+    Top = 208
+    Width = 75
+    Height = 25
+    Caption = 'Edit'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 640
+    Top = 208
+    Width = 75
+    Height = 25
+    Caption = 'Undelet'
+    TabOrder = 2
+    OnClick = Button2Click
+  end
+  object Edit1: TEdit
+    Left = 640
+    Top = 32
+    Width = 169
+    Height = 21
+    TabOrder = 3
+  end
+  object Edit2: TEdit
+    Left = 640
+    Top = 80
+    Width = 169
+    Height = 21
+    TabOrder = 4
+  end
+  object Edit3: TEdit
+    Left = 640
+    Top = 128
+    Width = 169
+    Height = 21
+    TabOrder = 5
+  end
+  object Edit4: TEdit
+    Left = 640
+    Top = 176
+    Width = 169
+    Height = 21
+    TabOrder = 6
+  end
+  object Button3: TButton
+    Left = 632
+    Top = 304
+    Width = 75
+    Height = 25
+    Caption = 'Button3'
+    TabOrder = 7
+    OnClick = Button3Click
+  end
+  object DataSource1: TDataSource
+    Left = 744
+    Top = 240
+  end
+  object ADOTable1: TADOTable
+    Left = 752
+    Top = 272
+  end
+  object ADOConnection1: TADOConnection
+    LoginPrompt = False
+    Left = 784
+    Top = 248
+  end
+end
