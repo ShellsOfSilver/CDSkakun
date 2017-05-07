@@ -26,6 +26,13 @@ type
     Panel4: TPanel;
     RadioButton1: TRadioButton;
     RadioButton2: TRadioButton;
+    RadioGroup1: TRadioGroup;
+    GroupBox1: TGroupBox;
+    RadioGroup2: TRadioGroup;
+    RadioGroup3: TRadioGroup;
+    Button4: TButton;
+    Edit1: TEdit;
+    Button5: TButton;
     procedure N5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -34,6 +41,12 @@ type
     procedure RadioButton2Click(Sender: TObject);
     procedure DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure RadioButton3Click(Sender: TObject);
+    procedure RadioButton4Click(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
+    procedure RadioGroup2Click(Sender: TObject);
+    procedure RadioGroup3Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,6 +115,8 @@ DBGrid1.DataSource:=DataSource1;
 form5.DBGrid1.DataSource:=form3.DataSource1;
 form6.DBGrid1.DataSource:=form3.DataSource1;
 
+
+
 dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form5.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form6.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
@@ -117,6 +132,7 @@ end;
 procedure TForm3.RadioButton2Click(Sender: TObject);
 begin
 Button1.Visible:=true;
+
 end;
 
 procedure TForm3.DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -127,6 +143,50 @@ begin
 dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 for i:=1 to DBGrid1.Columns.count-1 do
 dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+end;
+
+procedure TForm3.RadioButton3Click(Sender: TObject);
+begin
+AdoTable1.Sort:='Brand ASC'; //asc -возростание
+//DESC - убивание
+end;
+
+procedure TForm3.RadioButton4Click(Sender: TObject);
+begin
+AdoTable1.Sort:='Brand DESC';
+end;
+
+procedure TForm3.RadioGroup1Click(Sender: TObject);
+begin
+case Radiogroup1.Itemindex of
+0:AdoTable1.Sort:='Brand ASC'; //asc -возростание
+1:AdoTable1.Sort:='Brand DESC';  //DESC - убивание
+end;
+end;
+
+procedure TForm3.RadioGroup2Click(Sender: TObject);
+begin
+case Radiogroup2.Itemindex of
+0:AdoTable1.Sort:='Model ASC';
+1:AdoTable1.Sort:='Model DESC';
+end;
+end;
+
+procedure TForm3.RadioGroup3Click(Sender: TObject);
+begin
+case Radiogroup3.Itemindex of
+0:AdoTable1.Sort:='Mileage ASC';
+1:AdoTable1.Sort:='Mileage DESC';
+end;
+end;
+
+procedure TForm3.Button5Click(Sender: TObject);
+var opti:TLocateOptions;
+begin
+if not AdoTable1.Locate('Brand',Edit1.Text,[loCaseInsensitive,loPartialKey]) then
+showmessage('Not Found');
+
+
 end;
 
 end.

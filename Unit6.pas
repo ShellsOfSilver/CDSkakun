@@ -48,6 +48,14 @@ end;
 
 procedure TForm6.Button1Click(Sender: TObject);
 begin
+if edit1.Text='' then
+ edit1.Text:='NULL';
+if edit2.Text='' then
+ edit2.Text:='NULL';
+if edit3.Text='' then
+ edit3.Text:='NULL';
+if edit4.Text='' then
+ edit4.Text:='0';
 form3.AdoTable1.Edit;
 form3.AdoTable1.FieldByName('Brand').AsString:=edit1.Text;
 form3.AdoTable1.FieldByName('Model').AsString:=edit2.Text;

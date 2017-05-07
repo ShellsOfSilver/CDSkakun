@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 219
-  Top = 91
+  Left = 267
+  Top = 110
   Width = 767
   Height = 436
   Caption = 'Form3'
@@ -15,7 +15,7 @@ object Form3: TForm3
   TextHeight = 13
   object Splitter1: TSplitter
     Left = 0
-    Top = 65
+    Top = 73
     Width = 759
     Height = 3
     Cursor = crVSplit
@@ -30,21 +30,21 @@ object Form3: TForm3
     Align = alBottom
   end
   object Splitter3: TSplitter
-    Left = 408
-    Top = 68
-    Height = 290
+    Left = 477
+    Top = 76
+    Height = 282
     Align = alRight
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 759
-    Height = 65
+    Height = 73
     Align = alTop
     TabOrder = 0
     object Button1: TButton
-      Left = 312
-      Top = 8
+      Left = 224
+      Top = 40
       Width = 75
       Height = 25
       Caption = 'Open DB'
@@ -53,8 +53,8 @@ object Form3: TForm3
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 224
-      Top = 8
+      Left = 144
+      Top = 40
       Width = 75
       Height = 25
       Caption = 'Edit'
@@ -62,7 +62,7 @@ object Form3: TForm3
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 136
+      Left = 144
       Top = 8
       Width = 75
       Height = 25
@@ -70,23 +70,75 @@ object Form3: TForm3
       TabOrder = 2
       OnClick = Button3Click
     end
-    object RadioButton1: TRadioButton
+    object RadioGroup1: TRadioGroup
+      Left = 312
+      Top = 8
+      Width = 97
+      Height = 57
+      Caption = 'Sort Brand'
+      Items.Strings = (
+        'Up'
+        'Down')
+      TabOrder = 3
+      OnClick = RadioGroup1Click
+    end
+    object GroupBox1: TGroupBox
       Left = 8
       Top = 8
-      Width = 113
-      Height = 17
-      Caption = 'Use standart DB'
-      TabOrder = 3
-      OnClick = RadioButton1Click
-    end
-    object RadioButton2: TRadioButton
-      Left = 8
-      Top = 32
-      Width = 113
-      Height = 17
-      Caption = 'Use other Db'
+      Width = 129
+      Height = 57
+      Caption = 'Choose DB'
       TabOrder = 4
-      OnClick = RadioButton2Click
+      object RadioButton1: TRadioButton
+        Left = 8
+        Top = 16
+        Width = 113
+        Height = 17
+        Caption = 'Use standart DB'
+        TabOrder = 0
+        OnClick = RadioButton1Click
+      end
+      object RadioButton2: TRadioButton
+        Left = 8
+        Top = 32
+        Width = 113
+        Height = 17
+        Caption = 'Use other DB'
+        TabOrder = 1
+        OnClick = RadioButton2Click
+      end
+    end
+    object RadioGroup2: TRadioGroup
+      Left = 416
+      Top = 8
+      Width = 97
+      Height = 57
+      Caption = 'Sort Model'
+      Items.Strings = (
+        'Up'
+        'Down')
+      TabOrder = 5
+      OnClick = RadioGroup2Click
+    end
+    object RadioGroup3: TRadioGroup
+      Left = 520
+      Top = 8
+      Width = 97
+      Height = 57
+      Caption = 'Sort Mileage'
+      Items.Strings = (
+        'Up'
+        'Down')
+      TabOrder = 6
+      OnClick = RadioGroup3Click
+    end
+    object Button4: TButton
+      Left = 224
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Report'
+      TabOrder = 7
     end
   end
   object Panel2: TPanel
@@ -98,25 +150,41 @@ object Form3: TForm3
     TabOrder = 1
   end
   object Panel3: TPanel
-    Left = 411
-    Top = 68
-    Width = 348
-    Height = 290
+    Left = 480
+    Top = 76
+    Width = 279
+    Height = 282
     Align = alRight
     TabOrder = 2
+    object Edit1: TEdit
+      Left = 8
+      Top = 8
+      Width = 185
+      Height = 25
+      TabOrder = 0
+    end
+    object Button5: TButton
+      Left = 200
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Search'
+      TabOrder = 1
+      OnClick = Button5Click
+    end
   end
   object Panel4: TPanel
     Left = 0
-    Top = 68
-    Width = 408
-    Height = 290
+    Top = 76
+    Width = 477
+    Height = 282
     Align = alClient
     TabOrder = 3
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 406
-      Height = 288
+      Width = 475
+      Height = 280
       Align = alClient
       DataSource = DataSource1
       FixedColor = clSilver
@@ -136,18 +204,21 @@ object Form3: TForm3
     end
   end
   object DataSource1: TDataSource
-    Left = 472
+    Left = 24
+    Top = 376
   end
   object OpenDialog1: TOpenDialog
-    Left = 552
+    Top = 376
   end
   object ADOConnection1: TADOConnection
     LoginPrompt = False
     Provider = 'MSDASQL.1'
-    Left = 496
+    Left = 48
+    Top = 376
   end
   object ADOTable1: TADOTable
     CursorType = ctStatic
-    Left = 520
+    Left = 72
+    Top = 376
   end
 end

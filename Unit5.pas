@@ -44,9 +44,14 @@ uses Unit3;
 procedure TForm5.Button1Click(Sender: TObject);
 begin
 form3.AdoTable1.append;
-
-//dbgrid1.ReadOnly:=true;
-//table1.Insert;
+if edit1.Text='' then
+ edit1.Text:='NULL';
+if edit2.Text='' then
+ edit2.Text:='NULL';
+if edit3.Text='' then
+ edit3.Text:='NULL';
+if edit4.Text='' then
+ edit4.Text:='0';
 form3.AdoTable1.FieldByName('Brand').AsString:=edit1.Text;
 form3.AdoTable1.FieldByName('Model').AsString:=edit2.Text;
 form3.AdoTable1.FieldByName('Color').AsString:=edit3.Text;

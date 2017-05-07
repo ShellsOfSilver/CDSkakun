@@ -24,6 +24,8 @@ type
     Splitter1: TSplitter;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -54,8 +56,18 @@ end;
 
 procedure TForm5.Button2Click(Sender: TObject);
 begin
-//table1.Delete;
+form3.AdoTable1.Delete;
 
+end;
+
+procedure TForm5.DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  var
+i,wi:integer;
+begin
+dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+for i:=1 to DBGrid1.Columns.count-1 do
+dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 end;
 
 end.
