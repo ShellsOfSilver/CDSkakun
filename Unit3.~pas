@@ -33,6 +33,7 @@ type
     Button4: TButton;
     Edit1: TEdit;
     Button5: TButton;
+    ADOQuery1: TADOQuery;
     procedure N5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -47,6 +48,7 @@ type
     procedure RadioGroup2Click(Sender: TObject);
     procedure RadioGroup3Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -107,13 +109,17 @@ begin
 Adoconnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+'E:\Cursova Skakun\autopark.accdb'+';DefaultDir=E:\Cursova Skakun;Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=testDNS.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
 Adoconnection1.Connected:=True;
 Adoconnection1.LoginPrompt:=False;
-AdoTable1.Connection:=Adoconnection1;
-AdoTable1.TableName:='AutoPark';
-AdoTable1.Active:=True;
-DataSource1.DataSet:=AdoTable1;
+//AdoTable1.Connection:=Adoconnection1;
+//AdoTable1.TableName:='AutoPark';
+//AdoTable1.Active:=True;
+AdoQuery1.Connection:=Adoconnection1;
+AdoQuery1.SQL.add('select * from AutoPark');
+AdoQuery1.Active:=True;
+DataSource1.DataSet:=AdoQuery1;
+//DataSource1.DataSet:=AdoTable1;
 DBGrid1.DataSource:=DataSource1;
-form5.DBGrid1.DataSource:=form3.DataSource1;
-form6.DBGrid1.DataSource:=form3.DataSource1;
+//form5.DBGrid1.DataSource:=form3.DataSource1;
+//form6.DBGrid1.DataSource:=form3.DataSource1;
 
 
 
@@ -182,10 +188,36 @@ end;
 
 procedure TForm3.Button5Click(Sender: TObject);
 var opti:TLocateOptions;
+ LookupResult:Variant;
+ hel1,hel2: string;
 begin
-if not AdoTable1.Locate('Brand',Edit1.Text,[loCaseInsensitive,loPartialKey]) then
-showmessage('Not Found');
+hel1:='%'+edit1.Text+'%';
+hel2:=Quotedstr(hel1);
+Adoquery1.Close;
+Adoquery1.SQL.Clear ;
+Adoquery1.SQL.Add('Select * from '+adotable1.TableName+'where Model like'+hel2+'or Brand like'+hel2+'or Color like'+hel2+'or Mileage like'+hel2+'order by Model');
+Adoquery1.Open;
 
+//if AdoTable1.Locate('Model',Edit1.Text,[loCaseInsensitive,loPartialKey]) then begin
+//  showmessage(ADOTable1.FieldByName('Код').AsString);
+//end
+//else if not AdoTable1.Locate('Model',Edit1.Text,[loCaseInsensitive,loPartialKey]) then
+//showmessage('Not Found');
+
+
+
+end;
+
+procedure TForm3.Edit1Change(Sender: TObject);
+var h1,hel2: string;
+begin
+h1:='%'+edit1.Text+'%';
+hel2:=Quotedstr(h1);
+Adoquery1.Close;
+Adoquery1.SQL.Clear ;
+Adoquery1.SQL.Add('Select * from AutoPark');
+Adoquery1.SQL.Add('where Model like '+hel2+' or Brand like '+hel2+' or Color like '+hel2+' or Mileage like '+hel2+' order by Model');
+ADOQuery1.Open;
 
 end;
 

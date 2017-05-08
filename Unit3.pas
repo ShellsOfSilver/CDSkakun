@@ -32,7 +32,8 @@ type
     RadioGroup3: TRadioGroup;
     Button4: TButton;
     Edit1: TEdit;
-    Button5: TButton;
+    ADOQuery1: TADOQuery;
+    Label1: TLabel;
     procedure N5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -46,7 +47,7 @@ type
     procedure RadioGroup1Click(Sender: TObject);
     procedure RadioGroup2Click(Sender: TObject);
     procedure RadioGroup3Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -86,18 +87,25 @@ result:=StringReplace(ExtractFileName(opendialog1.filename),ExtractFileExt(opend
 ADOConnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+opendialog1.filename+';DefaultDir='+ExtractFileDir(opendialog1.filename)+';Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=WTBDDSN.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
 Adoconnection1.Connected:=True;
 Adoconnection1.LoginPrompt:=False;
-AdoTable1.Connection:=Adoconnection1;
-ADOTable1.TableName:=result;
-AdoTable1.Active:=True;
-DataSource1.DataSet:=AdoTable1;
+AdoQuery1.Connection:=Adoconnection1;
+AdoQuery1.SQL.add('select * from '+ result);
+AdoQuery1.Active:=True;
+DataSource1.DataSet:=AdoQuery1;
 DBGrid1.DataSource:=DataSource1;
 form5.DBGrid1.DataSource:=form3.DataSource1;
 form6.DBGrid1.DataSource:=form3.DataSource1;
 if adoconnection1.Connected then
-showmessage('DB is connect');
-dbgrid1.Columns.Grid.Fields[1].DisplayWidth:=5;
-for i:=1 to DBGrid1.Columns.count-1 do
+  showmessage('DB is connect');
+
+dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+form5.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+form6.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+for i:=1 to DBGrid1.Columns.count-1 do begin
 dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+end;
+
 end;
 end;
 procedure TForm3.RadioButton1Click(Sender: TObject);
@@ -107,16 +115,18 @@ begin
 Adoconnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+'E:\Cursova Skakun\autopark.accdb'+';DefaultDir=E:\Cursova Skakun;Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=testDNS.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
 Adoconnection1.Connected:=True;
 Adoconnection1.LoginPrompt:=False;
-AdoTable1.Connection:=Adoconnection1;
-AdoTable1.TableName:='AutoPark';
-AdoTable1.Active:=True;
-DataSource1.DataSet:=AdoTable1;
+//AdoTable1.Connection:=Adoconnection1;
+//AdoTable1.TableName:='AutoPark';
+//AdoTable1.Active:=True;
+AdoQuery1.Connection:=Adoconnection1;
+AdoQuery1.SQL.add('select * from AutoPark');
+AdoQuery1.Active:=True;
+DataSource1.DataSet:=AdoQuery1;
+//DataSource1.DataSet:=AdoTable1;
 DBGrid1.DataSource:=DataSource1;
+
 form5.DBGrid1.DataSource:=form3.DataSource1;
 form6.DBGrid1.DataSource:=form3.DataSource1;
-
-
-
 dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form5.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form6.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
@@ -180,12 +190,25 @@ case Radiogroup3.Itemindex of
 end;
 end;
 
-procedure TForm3.Button5Click(Sender: TObject);
-var opti:TLocateOptions;
+procedure TForm3.Edit1Change(Sender: TObject);
+var h1,hel2: string;
+i:integer;
 begin
-if not AdoTable1.Locate('Brand',Edit1.Text,[loCaseInsensitive,loPartialKey]) then
-showmessage('Not Found');
-
+h1:='%'+edit1.Text+'%';
+hel2:=Quotedstr(h1);
+Adoquery1.Close;
+Adoquery1.SQL.Clear ;
+Adoquery1.SQL.Add('Select * from AutoPark');
+Adoquery1.SQL.Add('where Model like '+hel2+' or Brand like '+hel2+' or Color like '+hel2+' or Mileage like '+hel2+' order by Model');
+ADOQuery1.Open;
+dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+form5.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+form6.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+for i:=1 to DBGrid1.Columns.count-1 do begin
+dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+end;
 
 end;
 

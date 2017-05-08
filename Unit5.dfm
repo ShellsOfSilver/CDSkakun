@@ -1,6 +1,6 @@
 object Form5: TForm5
-  Left = 253
-  Top = 116
+  Left = 206
+  Top = 39
   Width = 766
   Height = 468
   Caption = 'Form5'
@@ -120,7 +120,6 @@ object Form5: TForm5
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
-      OnMouseDown = DBGrid1MouseDown
     end
   end
 end

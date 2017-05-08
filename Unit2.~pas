@@ -65,19 +65,9 @@ StringGrid3.Visible:=True;
 Randomize;
 for x:=0 to StringGrid1.ColCount-1 do begin
  for y:=0 to StringGrid1.RowCount-1 do begin
-   //L:=random(30)-15;
-   //stringgrid1.cells[x,y]:=inttostr(L);
-   //A[x,y]:=L;
-   Flag := True;
-    while Flag do
-          begin
-
-          end;
-
    L:=random(30)-15;
    stringgrid1.cells[x,y]:=inttostr(L);
    A[x,y]:=L;
-
  end;
 end;
 

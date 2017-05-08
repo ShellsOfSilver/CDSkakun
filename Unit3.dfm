@@ -1,7 +1,7 @@
 object Form3: TForm3
-  Left = 267
-  Top = 110
-  Width = 767
+  Left = 186
+  Top = 111
+  Width = 835
   Height = 436
   Caption = 'Form3'
   Color = clBtnFace
@@ -16,7 +16,7 @@ object Form3: TForm3
   object Splitter1: TSplitter
     Left = 0
     Top = 73
-    Width = 759
+    Width = 827
     Height = 3
     Cursor = crVSplit
     Align = alTop
@@ -24,13 +24,13 @@ object Form3: TForm3
   object Splitter2: TSplitter
     Left = 0
     Top = 358
-    Width = 759
+    Width = 827
     Height = 3
     Cursor = crVSplit
     Align = alBottom
   end
   object Splitter3: TSplitter
-    Left = 477
+    Left = 581
     Top = 76
     Height = 282
     Align = alRight
@@ -38,7 +38,7 @@ object Form3: TForm3
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 759
+    Width = 827
     Height = 73
     Align = alTop
     TabOrder = 0
@@ -144,46 +144,45 @@ object Form3: TForm3
   object Panel2: TPanel
     Left = 0
     Top = 361
-    Width = 759
+    Width = 827
     Height = 41
     Align = alBottom
     TabOrder = 1
   end
   object Panel3: TPanel
-    Left = 480
+    Left = 584
     Top = 76
-    Width = 279
+    Width = 243
     Height = 282
     Align = alRight
     TabOrder = 2
-    object Edit1: TEdit
-      Left = 8
-      Top = 8
-      Width = 185
-      Height = 25
-      TabOrder = 0
-    end
-    object Button5: TButton
-      Left = 200
-      Top = 8
-      Width = 75
-      Height = 25
+    object Label1: TLabel
+      Left = 9
+      Top = 9
+      Width = 34
+      Height = 24
       Caption = 'Search'
-      TabOrder = 1
-      OnClick = Button5Click
+    end
+    object Edit1: TEdit
+      Left = 48
+      Top = 8
+      Width = 169
+      Height = 21
+      TabOrder = 0
+      OnChange = Edit1Change
     end
   end
   object Panel4: TPanel
     Left = 0
     Top = 76
-    Width = 477
+    Width = 581
     Height = 282
     Align = alClient
     TabOrder = 3
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 475
+      Width = 579
       Height = 280
       Align = alClient
       DataSource = DataSource1
@@ -220,5 +219,12 @@ object Form3: TForm3
     CursorType = ctStatic
     Left = 72
     Top = 376
+  end
+  object ADOQuery1: TADOQuery
+    Parameters = <>
+    SQL.Strings = (
+      '')
+    Left = 104
+    Top = 377
   end
 end
