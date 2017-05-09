@@ -56,7 +56,7 @@ if edit3.Text='' then
  edit3.Text:='NULL';
 if edit4.Text='' then
  edit4.Text:='0';
-form3.doquery1.Edit;
+form3.adoquery1.Edit;
 form3.Adoquery1.FieldByName('Brand').AsString:=edit1.Text;
 form3.Adoquery1.FieldByName('Model').AsString:=edit2.Text;
 form3.Adoquery1.FieldByName('Color').AsString:=edit3.Text;

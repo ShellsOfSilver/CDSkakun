@@ -1,0 +1,6 @@
+Sub Mac1()
+    Sheets.Add After:=Sheets(Sheets.Count)
+    ActiveSheet.Shapes.AddChart.Select
+    ActiveChart.ChartType = xl3DColumnStacked
+    ActiveChart.SetSourceData Source:=Sheets("Report").Range("A2:E9")
+End Sub

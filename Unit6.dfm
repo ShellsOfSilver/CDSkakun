@@ -1,7 +1,7 @@
 object Form6: TForm6
-  Left = 216
-  Top = 106
-  Width = 843
+  Left = 0
+  Top = 16
+  Width = 640
   Height = 436
   Caption = 'Form6'
   Color = clBtnFace
@@ -21,14 +21,14 @@ object Form6: TForm6
   object Panel1: TPanel
     Left = 3
     Top = 0
-    Width = 621
+    Width = 418
     Height = 402
     Align = alClient
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 619
+      Width = 416
       Height = 400
       Align = alClient
       TabOrder = 0
@@ -41,7 +41,7 @@ object Form6: TForm6
     end
   end
   object Panel2: TPanel
-    Left = 624
+    Left = 421
     Top = 0
     Width = 211
     Height = 402

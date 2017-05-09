@@ -77,12 +77,13 @@ dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 end;
 
 procedure TForm5.Button2Click(Sender: TObject);
+var i:integer;
 begin
 
 form3.Adoquery1.Delete;
 
 dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
-for i:=1 to DBGrid1.Columns.count-1 do begin
+for i:=1 to DBGrid1.Columns.count-1 do 
 dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 
 end;

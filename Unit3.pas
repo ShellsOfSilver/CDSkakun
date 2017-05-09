@@ -197,6 +197,8 @@ end;
 
 procedure TForm3.Button4Click(Sender: TObject);
 var
+Chart: Variant;
+ChartCount: integer;
 i,j,index: Integer;
 ExcelApp,sheet: Variant;
 begin
@@ -206,12 +208,38 @@ ExcelApp.Visible := true;
 ExcelApp.WorkBooks.Add(-4167);//-4167 -это константа которая означает создание книги
 ExcelApp.WorkBooks[1].WorkSheets[1].name := 'Report';
 sheet:=ExcelApp.WorkBooks[1].WorkSheets['Report'];
+sheet.rows[2].font.bold:=true;
+sheet.rows[2].font.size:=12;
+sheet.cells[2,1]:='Index';
+sheet.cells[2,2]:='Brand';
+sheet.cells[2,3]:='Model';
+sheet.cells[2,4]:='Color';
+sheet.cells[2,5]:='Mileage';
+ExcelApp.rows[2].HorizontalAlignment := -4108;
 index:=3;
 DBGrid1.DataSource.DataSet.First;
+ExcelApp.Range['A2','E'+inttostr(DBGrid1.DataSource.DataSet.RecordCount+2)].Borders.Color := clBlack;
+
+
+//ExcelApp.VBE.ActiveVBProject.VBComponents.Import('E:\Cursova Skakun\mac.txt');
+//ExcelApp.VBE.SelectedVBComponent.CodeModule.AddFromString(
+//'Sub Mac1()'+
+ //   'Sheets.Add After:=Sheets(Sheets.Count)'+
+ //   'ActiveSheet.Shapes.AddChart.Select'+
+//   'ActiveChart.ChartType = xl3DColumnStacked '+
+//    'ActiveChart.SetSourceData Source:=Sheets("Report").Range("A2:E9")'+
+//'End Sub'
+//);
+//ExcelApp.Run('Mac1');
+
+
+
 for i:=1 to DBGrid1.DataSource.DataSet.RecordCount do
 begin
+ExcelApp.rows[i+2].HorizontalAlignment := -4108;
 for j:=1 to DBGrid1.FieldCount do
 sheet.cells[index,j]:=DBGrid1.fields[j-1].asstring;
+
 inc(index);
 DBGrid1.DataSource.DataSet.Next;
 end;
