@@ -56,12 +56,12 @@ if edit3.Text='' then
  edit3.Text:='NULL';
 if edit4.Text='' then
  edit4.Text:='0';
-form3.AdoTable1.Edit;
-form3.AdoTable1.FieldByName('Brand').AsString:=edit1.Text;
-form3.AdoTable1.FieldByName('Model').AsString:=edit2.Text;
-form3.AdoTable1.FieldByName('Color').AsString:=edit3.Text;
-form3.AdoTable1.FieldByName('Mileage').AsInteger:=strtoint(edit4.Text);
-form3.AdoTable1.Post;
+form3.adoquery1.Edit;
+form3.Adoquery1.FieldByName('Brand').AsString:=edit1.Text;
+form3.Adoquery1.FieldByName('Model').AsString:=edit2.Text;
+form3.Adoquery1.FieldByName('Color').AsString:=edit3.Text;
+form3.adoquery1.FieldByName('Mileage').AsInteger:=strtoint(edit4.Text);
+form3.adoquery1.Post;
 end;
 
 procedure TForm6.DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;

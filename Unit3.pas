@@ -34,20 +34,21 @@ type
     Edit1: TEdit;
     ADOQuery1: TADOQuery;
     Label1: TLabel;
+    RadioGroup4: TRadioGroup;
     procedure N5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
-    procedure DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure RadioButton3Click(Sender: TObject);
-    procedure RadioButton4Click(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
     procedure RadioGroup2Click(Sender: TObject);
     procedure RadioGroup3Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure RadioGroup4Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -115,14 +116,10 @@ begin
 Adoconnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+'E:\Cursova Skakun\autopark.accdb'+';DefaultDir=E:\Cursova Skakun;Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=testDNS.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
 Adoconnection1.Connected:=True;
 Adoconnection1.LoginPrompt:=False;
-//AdoTable1.Connection:=Adoconnection1;
-//AdoTable1.TableName:='AutoPark';
-//AdoTable1.Active:=True;
 AdoQuery1.Connection:=Adoconnection1;
 AdoQuery1.SQL.add('select * from AutoPark');
 AdoQuery1.Active:=True;
 DataSource1.DataSet:=AdoQuery1;
-//DataSource1.DataSet:=AdoTable1;
 DBGrid1.DataSource:=DataSource1;
 
 form5.DBGrid1.DataSource:=form3.DataSource1;
@@ -131,62 +128,39 @@ dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form5.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form6.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 for i:=1 to DBGrid1.Columns.count-1 do begin
-dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
-form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
-form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+  dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+  form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+  form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 end;
-
-
 end;
 
 procedure TForm3.RadioButton2Click(Sender: TObject);
 begin
 Button1.Visible:=true;
-
-end;
-
-procedure TForm3.DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-  var
-i,wi:integer;
-begin
-dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
-for i:=1 to DBGrid1.Columns.count-1 do
-dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
-end;
-
-procedure TForm3.RadioButton3Click(Sender: TObject);
-begin
-AdoTable1.Sort:='Brand ASC'; //asc -возростание
-//DESC - убивание
-end;
-
-procedure TForm3.RadioButton4Click(Sender: TObject);
-begin
-AdoTable1.Sort:='Brand DESC';
+Adoquery1.Close;
 end;
 
 procedure TForm3.RadioGroup1Click(Sender: TObject);
 begin
 case Radiogroup1.Itemindex of
-0:AdoTable1.Sort:='Brand ASC'; //asc -возростание
-1:AdoTable1.Sort:='Brand DESC';  //DESC - убивание
+  0:Adoquery1.Sort:='Brand ASC'; //asc -возростание
+  1:Adoquery1.Sort:='Brand DESC';  //DESC - убивание
 end;
 end;
 
 procedure TForm3.RadioGroup2Click(Sender: TObject);
 begin
 case Radiogroup2.Itemindex of
-0:AdoTable1.Sort:='Model ASC';
-1:AdoTable1.Sort:='Model DESC';
+  0:Adoquery1.Sort:='Model ASC';
+  1:Adoquery1.Sort:='Model DESC';
 end;
 end;
 
 procedure TForm3.RadioGroup3Click(Sender: TObject);
 begin
 case Radiogroup3.Itemindex of
-0:AdoTable1.Sort:='Mileage ASC';
-1:AdoTable1.Sort:='Mileage DESC';
+  0:Adoquery1.Sort:='Mileage ASC';
+  1:Adoquery1.Sort:='Mileage DESC';
 end;
 end;
 
@@ -198,18 +172,60 @@ h1:='%'+edit1.Text+'%';
 hel2:=Quotedstr(h1);
 Adoquery1.Close;
 Adoquery1.SQL.Clear ;
-Adoquery1.SQL.Add('Select * from AutoPark');
+if RadioButton1.Checked then
+  Adoquery1.SQL.Add('Select * from AutoPark');
+if RadioButton2.Checked then
+  Adoquery1.SQL.Add('Select * from '+StringReplace(ExtractFileName(opendialog1.filename),ExtractFileExt(opendialog1.filename),'',[]));
 Adoquery1.SQL.Add('where Model like '+hel2+' or Brand like '+hel2+' or Color like '+hel2+' or Mileage like '+hel2+' order by Model');
 ADOQuery1.Open;
 dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form5.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 form6.dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 for i:=1 to DBGrid1.Columns.count-1 do begin
-dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
-form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
-form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+  dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+  form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+  form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+end;
+end;
+procedure TForm3.RadioGroup4Click(Sender: TObject);
+begin
+case Radiogroup4.Itemindex of
+  0:Adoquery1.Sort:='Color ASC';
+  1:Adoquery1.Sort:='Color DESC';
+end;
 end;
 
+procedure TForm3.Button4Click(Sender: TObject);
+var
+i,j,index: Integer;
+ExcelApp,sheet: Variant;
+begin
+if adoconnection1.Connected then begin
+ExcelApp := CreateOleObject('Excel.Application');
+ExcelApp.Visible := true;
+ExcelApp.WorkBooks.Add(-4167);//-4167 -это константа которая означает создание книги
+ExcelApp.WorkBooks[1].WorkSheets[1].name := 'Report';
+sheet:=ExcelApp.WorkBooks[1].WorkSheets['Report'];
+index:=3;
+DBGrid1.DataSource.DataSet.First;
+for i:=1 to DBGrid1.DataSource.DataSet.RecordCount do
+begin
+for j:=1 to DBGrid1.FieldCount do
+sheet.cells[index,j]:=DBGrid1.fields[j-1].asstring;
+inc(index);
+DBGrid1.DataSource.DataSet.Next;
+end;
+end;
+end;
+
+procedure TForm3.DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+var i:integer;
+begin
+dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
+for i:=1 to DBGrid1.Columns.count-1 do begin
+dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+end;
 end;
 
 end.

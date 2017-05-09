@@ -1,7 +1,7 @@
 object Form3: TForm3
-  Left = 186
-  Top = 111
-  Width = 835
+  Left = 380
+  Top = 95
+  Width = 770
   Height = 436
   Caption = 'Form3'
   Color = clBtnFace
@@ -16,7 +16,7 @@ object Form3: TForm3
   object Splitter1: TSplitter
     Left = 0
     Top = 73
-    Width = 827
+    Width = 762
     Height = 3
     Cursor = crVSplit
     Align = alTop
@@ -24,13 +24,13 @@ object Form3: TForm3
   object Splitter2: TSplitter
     Left = 0
     Top = 358
-    Width = 827
+    Width = 762
     Height = 3
     Cursor = crVSplit
     Align = alBottom
   end
   object Splitter3: TSplitter
-    Left = 581
+    Left = 516
     Top = 76
     Height = 282
     Align = alRight
@@ -38,7 +38,7 @@ object Form3: TForm3
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 827
+    Width = 762
     Height = 73
     Align = alTop
     TabOrder = 0
@@ -121,7 +121,7 @@ object Form3: TForm3
       OnClick = RadioGroup2Click
     end
     object RadioGroup3: TRadioGroup
-      Left = 520
+      Left = 624
       Top = 8
       Width = 97
       Height = 57
@@ -139,18 +139,31 @@ object Form3: TForm3
       Height = 25
       Caption = 'Report'
       TabOrder = 7
+      OnClick = Button4Click
+    end
+    object RadioGroup4: TRadioGroup
+      Left = 520
+      Top = 8
+      Width = 97
+      Height = 57
+      Caption = 'Sort Color'
+      Items.Strings = (
+        'Up'
+        'Down')
+      TabOrder = 8
+      OnClick = RadioGroup4Click
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 361
-    Width = 827
+    Width = 762
     Height = 41
     Align = alBottom
     TabOrder = 1
   end
   object Panel3: TPanel
-    Left = 584
+    Left = 519
     Top = 76
     Width = 243
     Height = 282
@@ -160,7 +173,7 @@ object Form3: TForm3
       Left = 9
       Top = 9
       Width = 34
-      Height = 24
+      Height = 13
       Caption = 'Search'
     end
     object Edit1: TEdit
@@ -175,14 +188,14 @@ object Form3: TForm3
   object Panel4: TPanel
     Left = 0
     Top = 76
-    Width = 581
+    Width = 516
     Height = 282
     Align = alClient
     TabOrder = 3
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 579
+      Width = 514
       Height = 280
       Align = alClient
       DataSource = DataSource1
