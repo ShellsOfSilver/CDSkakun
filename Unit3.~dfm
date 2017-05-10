@@ -132,15 +132,6 @@ object Form3: TForm3
       TabOrder = 6
       OnClick = RadioGroup3Click
     end
-    object Button4: TButton
-      Left = 224
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = 'Report'
-      TabOrder = 7
-      OnClick = Button4Click
-    end
     object RadioGroup4: TRadioGroup
       Left = 520
       Top = 8
@@ -150,8 +141,17 @@ object Form3: TForm3
       Items.Strings = (
         'Up'
         'Down')
-      TabOrder = 8
+      TabOrder = 7
       OnClick = RadioGroup4Click
+    end
+    object Button5: TButton
+      Left = 224
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Report'
+      TabOrder = 8
+      OnClick = Button5Click
     end
   end
   object Panel2: TPanel

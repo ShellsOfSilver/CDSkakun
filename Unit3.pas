@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, Grids, DBGrids, DB, DBTables, StdCtrls, ExtCtrls, DBCtrls,
-  ADODB,comobj;
+  ADODB,comobj,ExtDlgs;
 
 type
   TForm3 = class(TForm)
@@ -30,11 +30,11 @@ type
     GroupBox1: TGroupBox;
     RadioGroup2: TRadioGroup;
     RadioGroup3: TRadioGroup;
-    Button4: TButton;
     Edit1: TEdit;
     ADOQuery1: TADOQuery;
     Label1: TLabel;
     RadioGroup4: TRadioGroup;
+    Button5: TButton;
     procedure N5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -46,9 +46,9 @@ type
     procedure RadioGroup3Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure RadioGroup4Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
     procedure DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure Button5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -195,57 +195,6 @@ case Radiogroup4.Itemindex of
 end;
 end;
 
-procedure TForm3.Button4Click(Sender: TObject);
-var
-Chart: Variant;
-ChartCount: integer;
-i,j,index: Integer;
-ExcelApp,sheet: Variant;
-begin
-if adoconnection1.Connected then begin
-ExcelApp := CreateOleObject('Excel.Application');
-ExcelApp.Visible := true;
-ExcelApp.WorkBooks.Add(-4167);//-4167 -это константа которая означает создание книги
-ExcelApp.WorkBooks[1].WorkSheets[1].name := 'Report';
-sheet:=ExcelApp.WorkBooks[1].WorkSheets['Report'];
-sheet.rows[2].font.bold:=true;
-sheet.rows[2].font.size:=12;
-sheet.cells[2,1]:='Index';
-sheet.cells[2,2]:='Brand';
-sheet.cells[2,3]:='Model';
-sheet.cells[2,4]:='Color';
-sheet.cells[2,5]:='Mileage';
-ExcelApp.rows[2].HorizontalAlignment := -4108;
-index:=3;
-DBGrid1.DataSource.DataSet.First;
-ExcelApp.Range['A2','E'+inttostr(DBGrid1.DataSource.DataSet.RecordCount+2)].Borders.Color := clBlack;
-
-
-//ExcelApp.VBE.ActiveVBProject.VBComponents.Import('E:\Cursova Skakun\mac.txt');
-//ExcelApp.VBE.SelectedVBComponent.CodeModule.AddFromString(
-//'Sub Mac1()'+
- //   'Sheets.Add After:=Sheets(Sheets.Count)'+
- //   'ActiveSheet.Shapes.AddChart.Select'+
-//   'ActiveChart.ChartType = xl3DColumnStacked '+
-//    'ActiveChart.SetSourceData Source:=Sheets("Report").Range("A2:E9")'+
-//'End Sub'
-//);
-//ExcelApp.Run('Mac1');
-
-
-
-for i:=1 to DBGrid1.DataSource.DataSet.RecordCount do
-begin
-ExcelApp.rows[i+2].HorizontalAlignment := -4108;
-for j:=1 to DBGrid1.FieldCount do
-sheet.cells[index,j]:=DBGrid1.fields[j-1].asstring;
-
-inc(index);
-DBGrid1.DataSource.DataSet.Next;
-end;
-end;
-end;
-
 procedure TForm3.DBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var i:integer;
@@ -253,6 +202,45 @@ begin
 dbgrid1.Columns.Grid.Fields[0].DisplayWidth:=5;
 for i:=1 to DBGrid1.Columns.count-1 do begin
 dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
+end;
+end;
+
+procedure TForm3.Button5Click(Sender: TObject);
+var
+  Excel, Book, Sheet, Shape:OleVariant;
+  i,j,index: Integer;
+begin
+if adoconnection1.Connected then begin
+  Excel:=CreateOleObject('Excel.Application');
+  Excel.Visible:=True;
+  Book:=Excel.Workbooks.Add;
+  Excel.WorkBooks[1].WorkSheets[1].name := 'Report';
+  Sheet:=Book.Worksheets[1];
+  sheet.rows[2].font.bold:=true;
+sheet.rows[2].font.size:=12;
+sheet.cells[2,1]:='Index';
+sheet.cells[2,2]:='Brand';
+sheet.cells[2,3]:='Model';
+sheet.cells[2,4]:='Color';
+sheet.cells[2,5]:='Mileage';
+sheet.rows[2].HorizontalAlignment := -4108;
+index:=3;
+DBGrid1.DataSource.DataSet.First;
+sheet.Range['A2','E'+inttostr(DBGrid1.DataSource.DataSet.RecordCount+2)].Borders.Color := clBlack;
+
+for i:=1 to DBGrid1.DataSource.DataSet.RecordCount do
+begin
+sheet.rows[i+2].HorizontalAlignment := -4108;
+for j:=1 to DBGrid1.FieldCount do
+sheet.cells[index,j]:=DBGrid1.fields[j-1].asstring;
+inc(index);
+DBGrid1.DataSource.DataSet.Next;
+end;
+
+  Shape:=Sheet.Shapes.AddChart;
+  Shape.Chart.ChartType :=55;
+  Shape.Chart.SetSourceData(Source:=Sheet.Range['E3:E'+inttostr((DBGrid1.DataSource.DataSet.RecordCount+2))]);
+  Shape.Chart.SeriesCollection(1).XValues := Format('=%s!$A$3:$D$'+inttostr((DBGrid1.DataSource.DataSet.RecordCount+2)), [Sheet.Name]);
 end;
 end;
 
