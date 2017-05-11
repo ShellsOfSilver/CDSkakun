@@ -113,7 +113,7 @@ procedure TForm3.RadioButton1Click(Sender: TObject);
 var
 i,wi:integer;
 begin
-Adoconnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+'E:\Cursova Skakun\autopark.accdb'+';DefaultDir=E:\Cursova Skakun;Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=testDNS.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
+Adoconnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+ExtractFilepath(Paramstr(0))+'autopark.accdb;DefaultDir='+ExtractFiledir(Paramstr(0))+';Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=testDNS.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
 Adoconnection1.Connected:=True;
 Adoconnection1.LoginPrompt:=False;
 AdoQuery1.Connection:=Adoconnection1;
@@ -238,9 +238,9 @@ DBGrid1.DataSource.DataSet.Next;
 end;
 
   Shape:=Sheet.Shapes.AddChart;
-  Shape.Chart.ChartType :=12;
+  Shape.Chart.ChartType :=55;
   Shape.Chart.SetSourceData(Source:=Sheet.Range['E3:E'+inttostr((DBGrid1.DataSource.DataSet.RecordCount+2))]);
-  Shape.Chart.SeriesCollection(1).XValues := Format('=%s!$A$2:$D$'+inttostr((DBGrid1.DataSource.DataSet.RecordCount+2)), [Sheet.Name]);
+  Shape.Chart.SeriesCollection(1).XValues := Format('=%s!$A$3:$D$'+inttostr((DBGrid1.DataSource.DataSet.RecordCount+2)), [Sheet.Name]);
 end;
 end;
 
