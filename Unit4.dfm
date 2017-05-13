@@ -1,10 +1,10 @@
 object Form4: TForm4
-  Left = 185
-  Top = 114
+  Left = 277
+  Top = 185
   VertScrollBar.Color = clInfoBk
   VertScrollBar.ParentColor = False
   BorderStyle = bsSingle
-  Caption = 'Form4'
+  Caption = #1048#1075#1088#1072
   ClientHeight = 310
   ClientWidth = 900
   Color = clWindow

@@ -3,7 +3,7 @@ object Form3: TForm3
   Top = 99
   Width = 770
   Height = 436
-  Caption = 'Form3'
+  Caption = #1041#1044
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,29 +16,29 @@ object Form3: TForm3
   object Splitter1: TSplitter
     Left = 0
     Top = 73
-    Width = 762
+    Width = 754
     Height = 3
     Cursor = crVSplit
     Align = alTop
   end
   object Splitter2: TSplitter
     Left = 0
-    Top = 358
-    Width = 762
+    Top = 353
+    Width = 754
     Height = 3
     Cursor = crVSplit
     Align = alBottom
   end
   object Splitter3: TSplitter
-    Left = 516
+    Left = 508
     Top = 76
-    Height = 282
+    Height = 277
     Align = alRight
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 762
+    Width = 754
     Height = 73
     Align = alTop
     TabOrder = 0
@@ -156,17 +156,17 @@ object Form3: TForm3
   end
   object Panel2: TPanel
     Left = 0
-    Top = 361
-    Width = 762
+    Top = 356
+    Width = 754
     Height = 41
     Align = alBottom
     TabOrder = 1
   end
   object Panel3: TPanel
-    Left = 519
+    Left = 511
     Top = 76
     Width = 243
-    Height = 282
+    Height = 277
     Align = alRight
     TabOrder = 2
     object Label1: TLabel
@@ -188,15 +188,15 @@ object Form3: TForm3
   object Panel4: TPanel
     Left = 0
     Top = 76
-    Width = 516
-    Height = 282
+    Width = 508
+    Height = 277
     Align = alClient
     TabOrder = 3
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 514
-      Height = 280
+      Width = 506
+      Height = 275
       Align = alClient
       DataSource = DataSource1
       FixedColor = clSilver

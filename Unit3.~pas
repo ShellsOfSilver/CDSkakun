@@ -83,6 +83,7 @@ var
 i,wi:integer;
 s,result:string;
 begin
+if not adoconnection1.Connected then begin
 if OpenDialog1.Execute then begin
 result:=StringReplace(ExtractFileName(opendialog1.filename),ExtractFileExt(opendialog1.filename),'',[]);
 ADOConnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+opendialog1.filename+';DefaultDir='+ExtractFileDir(opendialog1.filename)+';Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=WTBDDSN.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
@@ -106,6 +107,7 @@ dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 form5.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 end;
+end;
 
 end;
 end;
@@ -113,6 +115,7 @@ procedure TForm3.RadioButton1Click(Sender: TObject);
 var
 i,wi:integer;
 begin
+if not adoconnection1.Connected then begin
 Adoconnection1.ConnectionString:='Provider=MSDASQL.1;Persist Security Info=False;Extended Properties="DBQ='+ExtractFilepath(Paramstr(0))+'autopark.accdb;DefaultDir='+ExtractFiledir(Paramstr(0))+';Driver={Microsoft Access Driver (*.mdb, *.accdb)};DriverId=25;FIL=MS Access;FILEDSN=testDNS.dsn;MaxBufferSize=2048;MaxScanRows=8;PageTimeout=5;SafeTransactions=0;Threads=3;UID=admin;UserCommitSync=Yes;"';
 Adoconnection1.Connected:=True;
 Adoconnection1.LoginPrompt:=False;
@@ -133,11 +136,11 @@ for i:=1 to DBGrid1.Columns.count-1 do begin
   form6.dbgrid1.Columns[i].Width:=trunc(dbgrid1.Width/DBGrid1.Columns.count);
 end;
 end;
+end;
 
 procedure TForm3.RadioButton2Click(Sender: TObject);
 begin
 Button1.Visible:=true;
-Adoquery1.Close;
 end;
 
 procedure TForm3.RadioGroup1Click(Sender: TObject);

@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 349
-  Top = 122
+  Left = 478
+  Top = 203
   BorderStyle = bsSingle
-  Caption = 'Form1'
+  Caption = #1050#1091#1088#1089#1086#1074#1072#1103
   ClientHeight = 228
   ClientWidth = 296
   Color = clBtnFace

@@ -1,8 +1,8 @@
 object Form5: TForm5
-  Left = 206
-  Top = 39
-  Width = 766
-  Height = 468
+  Left = 2
+  Top = 1
+  Width = 638
+  Height = 447
   Caption = 'Form5'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,16 +14,16 @@ object Form5: TForm5
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 519
+    Left = 391
     Top = 0
-    Height = 434
+    Height = 413
     Align = alRight
   end
   object Panel1: TPanel
-    Left = 522
+    Left = 394
     Top = 0
     Width = 236
-    Height = 434
+    Height = 413
     Align = alRight
     TabOrder = 0
     object Label4: TLabel
@@ -104,15 +104,15 @@ object Form5: TForm5
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 519
-    Height = 434
+    Width = 391
+    Height = 413
     Align = alClient
     TabOrder = 1
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 517
-      Height = 432
+      Width = 389
+      Height = 411
       Align = alClient
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET

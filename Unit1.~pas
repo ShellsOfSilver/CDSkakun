@@ -24,6 +24,7 @@ type
       Y: Integer);
     procedure Button3MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,6 +80,14 @@ procedure TForm1.Button3MouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
 button3.Hint:='Використовуючи принцип мальованого мультфільму (рух створюється послідовною зміною кадрів),'+#13#10+'зобразити людину, що йде.';
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+application.HintColor:=clGrayText;
+application.HintHidePause:=600000;
+application.HintPause:=50;
+
 end;
 
 end.

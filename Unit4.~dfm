@@ -1,13 +1,13 @@
 object Form4: TForm4
-  Left = 185
-  Top = 114
-  VertScrollBar.Color = clBtnFace
+  Left = 277
+  Top = 185
+  VertScrollBar.Color = clInfoBk
   VertScrollBar.ParentColor = False
   BorderStyle = bsSingle
-  Caption = 'Form4'
+  Caption = #1048#1075#1088#1072
   ClientHeight = 310
   ClientWidth = 900
-  Color = clBtnHighlight
+  Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

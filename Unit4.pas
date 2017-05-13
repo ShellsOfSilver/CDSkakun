@@ -72,7 +72,6 @@ begin
 timer1.Enabled:=true;
 end;
 
-
 procedure TForm4.Timer1Timer(Sender: TObject);
 begin
 if move=1 then begin
@@ -203,6 +202,7 @@ if (Key = Ord('D')) or (Key = 39) then begin
 if (Key = Ord('A')) or (Key = 37) then begin
     move:=22;
     end;
+if Key = 27 then panel1.visible:=true;
 end;
 
 procedure TForm4.Button2Click(Sender: TObject);

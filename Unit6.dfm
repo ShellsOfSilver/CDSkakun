@@ -1,9 +1,9 @@
 object Form6: TForm6
-  Left = 0
-  Top = 16
+  Left = 438
+  Top = 190
   Width = 640
   Height = 436
-  Caption = 'Form6'
+  Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,20 +16,20 @@ object Form6: TForm6
   object Splitter1: TSplitter
     Left = 0
     Top = 0
-    Height = 402
+    Height = 397
   end
   object Panel1: TPanel
     Left = 3
     Top = 0
-    Width = 418
-    Height = 402
+    Width = 410
+    Height = 397
     Align = alClient
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 416
-      Height = 400
+      Width = 408
+      Height = 395
       Align = alClient
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -41,10 +41,10 @@ object Form6: TForm6
     end
   end
   object Panel2: TPanel
-    Left = 421
+    Left = 413
     Top = 0
     Width = 211
-    Height = 402
+    Height = 397
     Align = alRight
     TabOrder = 1
     object Label1: TLabel

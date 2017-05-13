@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 392
-  Top = 143
+  Left = 349
+  Top = 122
   BorderStyle = bsSingle
   Caption = 'Form1'
   ClientHeight = 228
@@ -12,6 +12,7 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel

@@ -1,9 +1,9 @@
 object Form2: TForm2
-  Left = 176
-  Top = 123
+  Left = 196
+  Top = 142
   Width = 960
   Height = 484
-  Caption = 'Form2'
+  Caption = #1052#1072#1089#1089#1080#1074
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,15 +16,15 @@ object Form2: TForm2
   object Splitter1: TSplitter
     Left = 0
     Top = 97
-    Width = 952
+    Width = 944
     Height = 3
     Cursor = crVSplit
     Align = alTop
   end
   object Splitter2: TSplitter
     Left = 0
-    Top = 406
-    Width = 952
+    Top = 401
+    Width = 944
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -33,12 +33,12 @@ object Form2: TForm2
     Left = 353
     Top = 100
     Width = 2
-    Height = 306
+    Height = 301
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 952
+    Width = 944
     Height = 97
     Align = alTop
     BevelWidth = 2
@@ -135,8 +135,8 @@ object Form2: TForm2
   end
   object Panel2: TPanel
     Left = 0
-    Top = 409
-    Width = 952
+    Top = 404
+    Width = 944
     Height = 41
     Align = alBottom
     TabOrder = 1
@@ -154,14 +154,14 @@ object Form2: TForm2
     Left = 0
     Top = 100
     Width = 353
-    Height = 306
+    Height = 301
     Align = alLeft
     TabOrder = 2
     object StringGrid1: TStringGrid
       Left = 1
       Top = 1
       Width = 351
-      Height = 304
+      Height = 299
       Align = alClient
       ColCount = 3
       FixedCols = 0
@@ -174,15 +174,15 @@ object Form2: TForm2
   object Panel4: TPanel
     Left = 355
     Top = 100
-    Width = 597
-    Height = 306
+    Width = 589
+    Height = 301
     Align = alClient
     TabOrder = 3
     object ListBox1: TListBox
       Left = 1
       Top = 1
-      Width = 595
-      Height = 151
+      Width = 587
+      Height = 146
       Align = alClient
       ItemHeight = 13
       TabOrder = 0
@@ -190,8 +190,8 @@ object Form2: TForm2
     end
     object ListBox2: TListBox
       Left = 1
-      Top = 152
-      Width = 595
+      Top = 147
+      Width = 587
       Height = 153
       Align = alBottom
       ItemHeight = 13
